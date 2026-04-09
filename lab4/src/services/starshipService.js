@@ -6,7 +6,6 @@ const init = (filePath) => {
     dataFilePath = filePath;
 };
 
-// Поиск всех кораблей с фильтрацией по имени (Требование из телеграма)
 const findAll = (name) => {
     const starships = fileService.readData(dataFilePath);
     if (name) {

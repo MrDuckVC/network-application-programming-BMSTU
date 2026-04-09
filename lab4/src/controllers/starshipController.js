@@ -1,7 +1,7 @@
 const starshipService = require('../services/starshipService');
 
 const getAllStarships = (req, res) => {
-    const { name } = req.query; // Извлекаем параметр поиска
+    const { name } = req.query;
     const starships = starshipService.findAll(name);
     res.json(starships);
 };
