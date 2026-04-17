@@ -47,6 +47,18 @@ const update = (id, shipData) => {
     return starships[index];
 };
 
+const replace = (id, shipData) => {
+    const starships = fileService.readData(dataFilePath);
+    const index = starships.findIndex(s => s.id === id);
+
+    if (index === -1) return null;
+
+    starships[index] = { id, ...shipData };
+    fileService.writeData(dataFilePath, starships);
+
+    return starships[index];
+};
+
 const remove = (id) => {
     const starships = fileService.readData(dataFilePath);
     const filtered = starships.filter(s => s.id !== id);
@@ -57,4 +69,4 @@ const remove = (id) => {
     return true;
 };
 
-module.exports = { init, findAll, findOne, create, update, remove };
+module.exports = { init, findAll, findOne, create, update, replace, remove };

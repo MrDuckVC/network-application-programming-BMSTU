@@ -6,6 +6,7 @@ router.get('/', starshipController.getAllStarships);
 router.get('/:id', starshipController.getStarshipById);
 router.post('/', starshipController.createStarship);
 router.patch('/:id', starshipController.updateStarship);
+router.put('/:id', starshipController.replaceStarship);
 router.delete('/:id', starshipController.deleteStarship);
 
 module.exports = router;

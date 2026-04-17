@@ -37,6 +37,22 @@ const updateStarship = (req, res) => {
     res.json(updatedStarship);
 };
 
+const replaceStarship = (req, res) => {
+    const id = parseInt(req.params.id);
+    const { name, generation, status, commissionDate } = req.body;
+
+    if (!name || !generation || !status || !commissionDate) {
+        return res.status(400).json({ error: 'Для PUT запроса необходимы ВСЕ поля: name, generation, status, commissionDate' });
+    }
+
+    const replacedStarship = starshipService.replace(id, { name, generation, status, commissionDate });
+
+    if (!replacedStarship) {
+        return res.status(404).json({ error: 'Космический корабль не найден' });
+    }
+    res.json(replacedStarship);
+};
+
 const deleteStarship = (req, res) => {
     const id = parseInt(req.params.id);
     const success = starshipService.remove(id);
@@ -52,5 +68,6 @@ module.exports = {
     getStarshipById,
     createStarship,
     updateStarship,
-    deleteStarship
+    replaceStarship,
+    deleteStarship,
 };
