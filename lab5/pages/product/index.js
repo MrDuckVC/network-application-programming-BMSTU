@@ -92,8 +92,6 @@ export class ProductPage {
             submitBtn.disabled = false;
 
             if (status === 200) {
-                alert("Данные успешно обновлены на сервере!");
-                // Перерисовываем страницу, чтобы обновить верхний блок с информацией
                 this.getData();
             } else {
                 alert(`Ошибка сохранения. Статус: ${status}. Проверьте CORS.`);
