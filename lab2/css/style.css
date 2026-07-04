@@ -31,7 +31,6 @@ body {
     color: var(--white);
 }
 
-<<<<<<< HEAD:lab2/css/style.css
 body[data-theme="dark"] {
     background-image: url("../img/mars.jpg");
 }
@@ -40,8 +39,6 @@ body[data-theme="light"] {
     background-image: url("../img/mars_starships.jpg");
 }
 
-=======
->>>>>>> master:lab1/css/style.css
 article {
     margin-left: 13vw;
     max-width: 650px;
@@ -106,11 +103,7 @@ mark {
 
 .calc-grid {
     display: grid;
-<<<<<<< HEAD:lab2/css/style.css
     grid-template-columns: repeat(6, 50px);
-=======
-    grid-template-columns: repeat(4, 50px);
->>>>>>> master:lab1/css/style.css
     gap: 5px;
     width: max-content;
 }
@@ -149,11 +142,7 @@ mark {
     filter: brightness(0.9);
 }
 
-<<<<<<< HEAD:lab2/css/style.css
 .calc-btn.double-width {
-=======
-.calc-btn.execute {
->>>>>>> master:lab1/css/style.css
     grid-column: span 2;
     border-radius: 4px
 }
