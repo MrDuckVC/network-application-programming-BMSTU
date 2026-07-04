@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "name": "Starship SN24",
+    "generation": "V1",
+    "status": "Orbital Ready",
+    "commissionDate": "2023-04-10"
+  },
+  {
+    "id": 2,
+    "name": "Super Heavy B7",
+    "generation": "V1",
+    "status": "Flight Tested",
+    "commissionDate": "2023-02-15"
+  },
+  {
+    "id": 3,
+    "name": "Starship S28",
+    "generation": "V2",
+    "status": "Testing",
+    "commissionDate": "2024-01-20"
+  }
+]
