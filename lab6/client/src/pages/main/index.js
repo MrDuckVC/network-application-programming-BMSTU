@@ -53,20 +53,16 @@ export class MainPage {
         this.getData();
     }
 
-    // НОВОЕ: Асинхронное получение данных через fetch
     async getData() {
         const innerContainer = document.getElementById('carousel-inner-container');
 
         try {
-            // Ждем ответа от сервера
             const data = await ajax.get(starshipUrls.getStarships());
 
-            // Если мы здесь — значит запрос успешный (200 OK)
             this.currentData = data;
             this.renderCarouselItems();
 
         } catch (error) {
-            // Если произошла ошибка (сеть, 404, 500 и т.д.)
             console.error("Ошибка при получении данных:", error);
 
             innerContainer.innerHTML = `

@@ -3,7 +3,6 @@ import { BackButtonComponent } from "../../components/back-button/index.js";
 import { MainPage } from "../main/index.js";
 import { EditFormComponent } from "../../components/edit-form/index.js";
 
-// Импортируем наш новый ajax на базе fetch
 import { ajax } from "../../modules/ajax.js";
 import { starshipUrls } from "../../modules/starshipUrls.js";
 
@@ -26,9 +25,7 @@ export class ProductPage {
         mainPage.render();
     }
 
-    // ТЕПЕРЬ ASYNC: получение данных
     async getData() {
-        // Показываем спиннер
         this.pageRoot.innerHTML = `
             <div class="d-flex justify-content-center align-items-center mt-5 spinner-container">
                 <div class="spinner-border text-light" role="status"></div>
@@ -36,11 +33,9 @@ export class ProductPage {
         `;
 
         try {
-            // Используем await вместо колбэка
             const data = await ajax.get(starshipUrls.getStarshipById(this.id));
             this.renderData(data);
         } catch (error) {
-            // Если промис отклонен (ошибка сети или сервера)
             this.pageRoot.innerHTML = `
                 <div class="mt-4">
                     <button id="error-back-btn" class="btn btn-primary mb-3">Назад</button>
@@ -68,11 +63,9 @@ export class ProductPage {
         product.render(mappedData);
 
         const editForm = new EditFormComponent(this.pageRoot);
-        // Передаем функцию сохранения
         editForm.render(item, this.saveChanges.bind(this));
     }
 
-    // ТЕПЕРЬ ASYNC: сохранение изменений
     async saveChanges() {
         const updatedData = {
             name: document.getElementById('input-name').value,
@@ -84,20 +77,16 @@ export class ProductPage {
         const submitBtn = document.querySelector('#edit-starship-form button[type="submit"]');
         const originalText = submitBtn.innerText;
 
-        // Индикация загрузки
         submitBtn.innerText = "Сохранение...";
         submitBtn.disabled = true;
 
         try {
-            // Выполняем PATCH и ждем результат
             await ajax.patch(starshipUrls.updateStarshipById(this.id), updatedData);
 
-            // Обновляем данные на странице
             await this.getData();
         } catch (error) {
             alert(`Ошибка сохранения: ${error.message}`);
         } finally {
-            // Возвращаем кнопку в исходное состояние в любом случае
             submitBtn.innerText = originalText;
             submitBtn.disabled = false;
         }

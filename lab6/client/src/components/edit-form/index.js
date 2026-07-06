@@ -38,7 +38,6 @@ export class EditFormComponent {
         `;
     }
 
-    // Заполнение формы текущими данными
     fillForm(item) {
         document.getElementById('input-name').value = item.name;
         document.getElementById('input-generation').value = item.generation;
@@ -50,10 +49,9 @@ export class EditFormComponent {
         this.parent.insertAdjacentHTML('beforeend', this.getHTML(item.id));
         this.fillForm(item);
 
-        // Слушаем отправку формы
         const form = document.getElementById('edit-starship-form');
         form.addEventListener('submit', (e) => {
-            e.preventDefault(); // Запрет перезагрузки страницы
+            e.preventDefault();
             onSubmitCallback();
         });
     }

@@ -1,9 +1,7 @@
 class Ajax {
-    // GET запрос
     async get(url) {
         try {
             const response = await fetch(url);
-            // fetch не кидает ошибку при 404 или 500, проверяем вручную
             if (!response.ok) {
                 throw new Error(`Ошибка: ${response.status}`);
             }
@@ -14,7 +12,6 @@ class Ajax {
         }
     }
 
-    // POST запрос
     async post(url, data) {
         try {
             const response = await fetch(url, {
@@ -31,7 +28,6 @@ class Ajax {
         }
     }
 
-    // PATCH запрос (для нашей формы редактирования)
     async patch(url, data) {
         try {
             const response = await fetch(url, {

@@ -3,7 +3,6 @@ import { MainPage } from "./pages/main/index.js";
 import { ajax } from "./modules/ajax.js";
 import { starshipUrls } from "./modules/starshipUrls.js";
 
-// ДОБАВЬ ЭТО:
 window.ajax = ajax;
 window.starshipUrls = starshipUrls;
 

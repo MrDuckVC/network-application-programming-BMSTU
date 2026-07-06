@@ -4,7 +4,6 @@ import { MainPage } from "../main/index.js";
 
 import { EditFormComponent } from "../../components/edit-form/index.js";
 
-// Импортируем сетевой слой
 import { ajax } from "../../modules/ajax.js";
 import { starshipUrls } from "../../modules/starshipUrls.js";
 
@@ -28,7 +27,6 @@ export class ProductPage {
     }
 
     getData() {
-        // Показываем спиннер loading
         this.pageRoot.innerHTML = `
             <div class="d-flex justify-content-center align-items-center mt-5 spinner-container">
                 <div class="spinner-border text-light" role="status"></div>
@@ -51,13 +49,11 @@ export class ProductPage {
     }
 
     renderData(item) {
-        this.pageRoot.innerHTML = ''; // Очищаем спиннер
+        this.pageRoot.innerHTML = '';
 
-        // Кнопка "Назад"
         const backButton = new BackButtonComponent(this.pageRoot);
         backButton.render(this.clickBack.bind(this));
 
-        // Основная информация о корабле
         const mappedData = {
             id: item.id,
             spacexTitle: item.name,
@@ -72,7 +68,6 @@ export class ProductPage {
     }
 
     saveChanges() {
-        // Собираем данные из полей формы
         const updatedData = {
             name: document.getElementById('input-name').value,
             generation: document.getElementById('input-generation').value,
@@ -80,13 +75,11 @@ export class ProductPage {
             commissionDate: document.getElementById('input-date').value
         };
 
-        // Визуальная индикация сохранения (меняем текст кнопки)
         const submitBtn = document.querySelector('#edit-starship-form button[type="submit"]');
         const originalText = submitBtn.innerText;
         submitBtn.innerText = "Сохранение...";
         submitBtn.disabled = true;
 
-        // Отправляем PATCH запрос
         ajax.patch(starshipUrls.updateStarshipById(this.id), updatedData, (res, status) => {
             submitBtn.innerText = originalText;
             submitBtn.disabled = false;
